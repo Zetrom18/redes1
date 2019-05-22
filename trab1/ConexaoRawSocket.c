@@ -1,12 +1,4 @@
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/ioctl.h>
-#include <net/ethernet.h>
-#include <linux/if_packet.h>
-#include <linux/if.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+#include "crs.h"
 
 
 int ConexaoRawSocket(char *device)
@@ -28,7 +20,7 @@ int ConexaoRawSocket(char *device)
     printf("Erro no ioctl\n");
     exit(-1);
   }
-	
+
 
   memset(&endereco, 0, sizeof(endereco)); 	/*IP do dispositivo*/
   endereco.sll_family = AF_PACKET;
