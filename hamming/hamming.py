@@ -23,10 +23,8 @@ def text_from_bits(bits):
     text = ""
 
     while len(bits) > 7:
-        print(bits)
         text += chr(binary_to_int(bits[:8], 8))
         bits = bits[8:]
-        print(text)
     return text
 
 def change_char(s, p, r):
@@ -66,7 +64,7 @@ def encode():
         lista=list(f.read())
         bitstring = ""
         for byte in lista:
-            bitstring += "{0:b}".format(byte)
+            bitstring += ("00000000"+"{0:b}".format(byte))[-8:]
 
     array = []
     while len(bitstring) > 0:
