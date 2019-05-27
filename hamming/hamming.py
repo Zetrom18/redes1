@@ -13,19 +13,20 @@ parity_indexes_list = [
 ]
 
 def binary_to_int(binary, size=4):
-    print(binary)
     binary = binary[::-1]
     sum = 0
     for i in range(size):
         sum += int(binary[i])*(2**i)
-    print(sum)
     return sum
 
 def text_from_bits(bits):
     text = ""
+
     while len(bits) > 7:
+        print(bits)
         text += chr(binary_to_int(bits[:8], 8))
         bits = bits[8:]
+        print(text)
     return text
 
 def change_char(s, p, r):
@@ -91,6 +92,7 @@ def hamming_decode(bitset):
             continue
         active_bits.append(("0000"+"{0:b}".format(index+1))[-4:])
     parity_xor = ""
+
     for parity_index in range(4):
         sum = 0
         for index in active_bits:
