@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  
+  master:
+    container_name: master
+    build:
+#        user: root
+        context: ./
+        dockerfile: ./Dockerfile
+
+  server:
+    container_name: server
+    build:
+#        user: root
+        context: ./      
+        dockerfile: ./Dockerfile

@@ -3,7 +3,7 @@
 
 #include "crs.h"
 
-#define SLAVE "enp2s0"
+#define SLAVE "eth0"
 
 void initSlave();
 
