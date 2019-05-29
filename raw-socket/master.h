@@ -3,8 +3,9 @@
 
 #include "crs.h"
 
-#define MASTER "eth0"
+// #define MASTER "eth0"
+#define ADDR "enp2s0"
 
-void initMaster();
+void init();
 
 #endif

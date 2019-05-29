@@ -3,7 +3,10 @@
 
 #include <string.h>
 #include <stdio.h>
-#include "master.h"
-#include "slave.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
+
+char *getCurrDir();
 
 #endif
