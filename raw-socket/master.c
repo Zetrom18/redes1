@@ -1,7 +1,9 @@
 #include "master.h"
 
 void init() {
-  get_curr_dir();
+  CURR_DIR[0] = '\0';
+  updateCurrDir();
+  puts(listCurrentFiles(CURR_DIR));
   // ConexaoRawSocket(ADDR);
   while (1==1) {
     /* code */
@@ -9,6 +11,6 @@ void init() {
 }
 
 int main(int argc, char const *argv[]) {
-  initMaster();
+  init();
   return 0;
 }

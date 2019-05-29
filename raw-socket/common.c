@@ -1,30 +1,38 @@
-#include "main.h"
+#include "common.h"
 
-void getCurrDir() {
-   char cwd[PATH_MAX];
-   if (getcwd(cwd, sizeof(cwd)) != NULL) {
-       printf("Current working dir: %s\n", cwd);
-   } else {
-       perror("getcwd() error");
-       return "";
-   }
-   return cwd;
+void reallocString(char *str, int size){
+  printf("%s\n", str);
+  str = (char *)realloc(str, (size)*sizeof(char));
 }
 
-// int main(int argc, char const *argv[]) {
-//   if (argc < 2) {
-//     puts("Parametros insuficientes");
-//     exit(-1);
-//   }
-//   if (strcmp("m", argv[1])==0) {
-//     puts("Sou master");
-//     initMaster();
-//   }else if (strcmp("s", argv[1])==0) {
-//     puts("Sou slave");
-//     initSlave();
-//   }else{
-//     puts("Parametros incorretos");
-//     exit(-1);
-//   }
-//   return 0;
-// }
+void updateCurrDir() {
+  char cwd[PATH_MAX];
+  if (getcwd(cwd, sizeof(cwd)) != NULL) {
+    strcpy(CURR_DIR, cwd);
+  }else{
+    puts("Nao foi possivel acessar diretorio");
+  }
+}
+
+char *listCurrentFiles(char *dir_path) {
+	struct dirent *de;
+
+	DIR *dr = opendir(dir_path);
+
+	if (dr == NULL) {
+		return "ERROR";
+	}
+
+  char *buffer = "";
+	while ((de = readdir(dr)) != NULL){
+    printf("%d %d\n", strlen(buffer), strlen(de->d_name));
+    printf("%s %s\n", buffer, de->d_name);
+    buffer = (char *)realloc(buffer,(strlen(buffer)+strlen(de->d_name)+2)*sizeof(char));
+    strcat(buffer, de->d_name);
+    strcat(buffer, "\n");
+    puts(buffer);
+  }
+
+	closedir(dr);
+	return buffer;
+}
