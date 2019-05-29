@@ -3,8 +3,8 @@
 
 #include "crs.h"
 
-#define MASTER "enp2s0"
+#define ADDR "enp2s0"
 
-void initMaster();
+void init();
 
 #endif
