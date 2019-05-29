@@ -3,7 +3,7 @@
 
 #include "crs.h"
 
-#define MASTER "enp2s0"
+#define MASTER "eth0"
 
 void initMaster();
 
