@@ -1,10 +1,12 @@
 #ifndef __SLAVE_H__
 #define __SLAVE_H__
 
+#include "common.h"
 #include "crs.h"
 
-#define SLAVE "eth0"
+#define ADDR "enp2s0"
 
-void initSlave();
+void init();
+void controller();
 
 #endif

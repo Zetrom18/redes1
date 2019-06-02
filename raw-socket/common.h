@@ -1,14 +1,15 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include "crs.h"
+#include "define.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
 #include <dirent.h>
+#include <assert.h>
 
-void reallocString(char *, int);
 void updateCurrDir();
 char *listCurrentFiles(char *);
 
