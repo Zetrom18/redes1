@@ -1,12 +1,13 @@
 #include "master.h"
 
 void lls(){
-  printf("%s", listCurrentFiles(CURR_DIR));
+  puts(listCurrentFiles(CURR_DIR));
 }
 
 void init() {
   CURR_DIR[0] = '\0';
   updateCurrDir();
+  lls();
   // ConexaoRawSocket(ADDR);
   puts("Mestre inicializado com sucesso");
 }

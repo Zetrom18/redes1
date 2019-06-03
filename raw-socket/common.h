@@ -11,6 +11,8 @@
 #include <assert.h>
 
 void updateCurrDir();
+char *newString();
+void concat(char *, char *);
 char *listCurrentFiles(char *);
 
 char CURR_DIR[PATH_MAX];

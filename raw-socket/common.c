@@ -9,20 +9,29 @@ void updateCurrDir() {
   }
 }
 
+char *newString(){
+  char *str = (char *)malloc(sizeof(char));
+  assert(str);
+  str[0] = '\0';
+  return str;
+}
+
+void concat(char* str1, char* str2){
+  str1 = (char *)realloc(str1,(strlen(str1)+strlen(str2)+1)*sizeof(char));
+  strcat(str1,str2);
+}
+
 char *listCurrentFiles(char *dir_path) {
 	struct dirent *de;
 
 	DIR *dr = opendir(dir_path);
 	assert(dr);
 
-  char *buffer = (char *)malloc(sizeof(char));
-  assert(buffer);
-  buffer[0] = '\0';
+  char *buffer = newString();
 
 	while ((de = readdir(dr)) != NULL){
-    buffer = (char *)realloc(buffer,(strlen(buffer)+strlen(de->d_name)+2)*sizeof(char));
-    strcat(buffer, de->d_name);
-    strcat(buffer, "\n");
+    concat(buffer, de->d_name);
+    concat(buffer, " ");
   }
 
 	closedir(dr);
