@@ -1,14 +1,5 @@
 #include "common.h"
 
-void updateCurrDir() {
-  char cwd[PATH_MAX];
-  if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    strcpy(CURR_DIR, cwd);
-  }else{
-    puts("Nao foi possivel acessar diretorio");
-  }
-}
-
 char *newString(){
   char *str = (char *)malloc(sizeof(char));
   assert(str);
@@ -21,11 +12,34 @@ void concat(char* str1, char* str2){
   strcat(str1,str2);
 }
 
-char *listCurrentFiles(char *dir_path) {
+void updateCurrDir(char *path) {
+  char* buffer = newString();
+  if (path[0]=='/') {
+    concat(buffer, path);
+  } else {
+    concat(buffer, CURR_DIR);
+    concat(buffer, "/");
+    concat(buffer, path);
+  }
+
+  if (listCurrentFiles(buffer, true)) {
+    strcpy(CURR_DIR, buffer);
+  }
+  free(buffer);
+}
+
+char *listCurrentFiles(char *dir_path, bool fake) {
 	struct dirent *de;
 
 	DIR *dr = opendir(dir_path);
-	assert(dr);
+  if (!dr) {
+    puts("Nao foi possivel acessar diretorio");
+    return NULL;
+  }
+
+  if (fake){
+    return;
+  }
 
   char *buffer = newString();
 
