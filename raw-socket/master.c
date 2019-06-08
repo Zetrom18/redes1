@@ -11,15 +11,15 @@ void test(){
 
 void lls(char *dir){
   if (strcmp(dir,"")==0){
-    puts(listCurrentFiles(CURR_DIR, false));
+    puts(listCurrentFiles(CURR_DIR, NULL, false));
   } else if (dir[0]=='/'){
-    puts(listCurrentFiles(dir, false));
+    puts(listCurrentFiles(dir, NULL, false));
   } else {
     char* buffer = newString();
     concat(buffer, CURR_DIR);
     concat(buffer, "/");
     concat(buffer, dir);
-    puts(listCurrentFiles(buffer, false));
+    puts(listCurrentFiles(buffer, NULL, false));
     free(buffer);
   }
 }

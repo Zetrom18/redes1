@@ -13,7 +13,7 @@
 char *newString();
 void concat(char *, char *);
 void updateCurrDir(char *path);
-char *listCurrentFiles(char *, bool);
+char *listCurrentFiles(char *, char *, bool);
 
 char CURR_DIR[PATH_MAX];
 
