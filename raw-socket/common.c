@@ -22,13 +22,13 @@ void updateCurrDir(char *path) {
     concat(buffer, path);
   }
 
-  if (listCurrentFiles(buffer, true)) {
+  if (listCurrentFiles(buffer, NULL, true)) {
     strcpy(CURR_DIR, buffer);
   }
   free(buffer);
 }
 
-char *listCurrentFiles(char *dir_path, bool fake) {
+char *listCurrentFiles(char *dir_path, char *opt, bool fake) {
 	struct dirent *de;
 
 	DIR *dr = opendir(dir_path);

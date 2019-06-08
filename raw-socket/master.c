@@ -1,10 +1,11 @@
 #include "master.h"
 
 void test(){
-  // lls("");
-  // lcd("my-test-dir");
-  // lls("");
-  // lcd("failed-dir");
+  lls("");
+  lcd("my-test-dir");
+  lls(".");
+  lcd("failed-dir");
+  lls("/home");
   mount_messages("hahaha");
 }
 
@@ -31,8 +32,8 @@ void init() {
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando mestre...");
-  test();
   // ConexaoRawSocket(ADDR);
+  test();
   puts("Mestre inicializado com sucesso");
   controller();
 }
