@@ -7,6 +7,8 @@
 
 #define ADDR "enp2s0"
 
+void lls(char *);
+void lcd(char *);
 void init();
 void controller();
 
