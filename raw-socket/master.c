@@ -32,6 +32,7 @@ void init() {
   puts("Inicializando mestre...");
   test();
   // ConexaoRawSocket(ADDR);
+  mount_messages("hahaha");
   puts("Mestre inicializado com sucesso");
   controller();
 }
