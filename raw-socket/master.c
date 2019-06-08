@@ -1,10 +1,11 @@
 #include "master.h"
 
 void test(){
-  lls("");
-  lcd("my-test-dir");
-  lls("");
-  lcd("failed-dir");
+  // lls("");
+  // lcd("my-test-dir");
+  // lls("");
+  // lcd("failed-dir");
+  mount_messages("hahaha");
 }
 
 void lls(char *dir){
@@ -32,7 +33,6 @@ void init() {
   puts("Inicializando mestre...");
   test();
   // ConexaoRawSocket(ADDR);
-  mount_messages("hahaha");
   puts("Mestre inicializado com sucesso");
   controller();
 }
