@@ -10,7 +10,8 @@
 #include <dirent.h>
 #include <assert.h>
 
-void updateCurrDir();
+void updateCurrDir(char *path);
+char* getCurrDir();
 char *newString();
 void concat(char *, char *);
 char *listCurrentFiles(char *);

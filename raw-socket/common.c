@@ -1,17 +1,26 @@
 #include "common.h"
 
-void updateCurrDir() {
-  char cwd[PATH_MAX];
-  if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    strcpy(CURR_DIR, cwd);
+void updateCurrDir(char *path) {
+  // char cwd[PATH_MAX];
+  // char* new_dir = concat(buffer, de->d_name);
+
+  if (getcwd(path, sizeof(path)) != NULL) {
+    concat(CURR_DIR, path);
   }else{
     puts("Nao foi possivel acessar diretorio");
   }
 }
 
+char* getCurrDir() {
+  if (CURR_DIR == NULL)
+    CURR_DIR[0] = '\0';
+
+  return CURR_DIR;
+}
+
 char *newString(){
   char *str = (char *)malloc(sizeof(char));
-  assert(str);
+  // assert(str);
   str[0] = '\0';
   return str;
 }
@@ -25,7 +34,7 @@ char *listCurrentFiles(char *dir_path) {
 	struct dirent *de;
 
 	DIR *dr = opendir(dir_path);
-	assert(dr);
+	// assert(dr);
 
   char *buffer = newString();
 
