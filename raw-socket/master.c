@@ -1,30 +1,30 @@
 #include "master.h"
 
 void test(){
-  lls("");
+  lls("", "l");
   lcd("my-test-dir");
-  lls(".");
+  lls(".", NULL);
   lcd("failed-dir");
-  lls("/home");
+  lls("/home", "al");
   mount_messages("hahaha");
 }
 
-void lls(char *dir){
+void lls(char *dir, char *opt){
   if (strcmp(dir,"")==0){
-    puts(listCurrentFiles(CURR_DIR, NULL, false));
+    puts(listCurrentFiles(CURR_DIR, opt, false));
   } else if (dir[0]=='/'){
-    puts(listCurrentFiles(dir, NULL, false));
+    puts(listCurrentFiles(dir, opt, false));
   } else {
     char* buffer = newString();
     concat(buffer, CURR_DIR);
     concat(buffer, "/");
     concat(buffer, dir);
-    puts(listCurrentFiles(buffer, NULL, false));
+    puts(listCurrentFiles(buffer, opt, false));
     free(buffer);
   }
 }
 
-void lcd(char* path){
+void lcd(char *path){
   updateCurrDir(path);
 }
 
