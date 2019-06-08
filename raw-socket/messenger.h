@@ -8,7 +8,7 @@
 #define MAX_DATA_BIT_COUNT 64
 #define CRC_BIT_COUNT 8
 
-unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
+// unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
 void mount_messages(char *data);
 unsigned char *string_to_bin_array(char *string);
 

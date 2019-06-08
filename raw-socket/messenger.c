@@ -1,14 +1,15 @@
 #include "messenger.h"
 
 unsigned char *string_to_bin_array(char *string){
-	int string_size = strlen(data)
+	puts("casting string to binary array");
+	int string_size = strlen(string);
 	int array_size = string_size * sizeof(char);
 	unsigned char *bin_array[array_size];
 
 	for (int i = 0; i < string_size; i++){
 		char current_char = string[i];
 		printf("%c - ", current_char);
-		for (j = 0; j < 8; j++){
+		for (int j = 0; j < 8; j++){
 		    printf("%d", current_char & (1 << (8 - j)));	
 		}
 		puts();

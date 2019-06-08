@@ -38,7 +38,7 @@ char *listCurrentFiles(char *dir_path, bool fake) {
   }
 
   if (fake){
-    return;
+    return "\0";
   }
 
   char *buffer = newString();
