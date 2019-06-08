@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-I.
-M_DEPS = master.h common.h define.h crs.h
-M_OBJ = master.o common.o ConexaoRawSocket.o
-S_DEPS = slave.h common.h define.h crs.h
-S_OBJ = slave.o common.o ConexaoRawSocket.o
+M_DEPS = master.h common.h define.h crs.h messenger.h
+M_OBJ = master.o common.o ConexaoRawSocket.o messenger.o
+S_DEPS = slave.h common.h define.h crs.h messenger.h
+S_OBJ = slave.o common.o ConexaoRawSocket.o messenger.h
 
 %.o: %.c $(M_DEPS) $(S_DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
