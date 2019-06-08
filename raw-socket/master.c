@@ -10,10 +10,11 @@ void lcd(char* path){
 
 void init() {
   puts("Inicializando mestre...");
-  lls();
-  lcd("my-test-dir");
-  lls();
+  // lls();
+  // lcd("my-test-dir");
+  // lls();
   // ConexaoRawSocket(ADDR);
+  mount_messages("hahaha");
   puts("Mestre inicializado com sucesso");
 }
 
