@@ -39,7 +39,7 @@ char *listCurrentFiles(char *dir_path, char *opt, bool fake) {
   }
 
   if (fake){
-    return "\0";
+    return "";
   }
 
   char *buffer = newString();
@@ -61,6 +61,24 @@ char *listCurrentFiles(char *dir_path, char *opt, bool fake) {
     }
   }
 
+  if (separator[0] == '\n'){
+    buffer[strlen(buffer)-1] = '\0';
+  }
+
 	closedir(dr);
 	return buffer;
+}
+
+void appendChar(char *str, char c){
+  char aux[2];
+  aux[0] = c;
+  aux[1] = '\0';
+  concat(str, aux);
+}
+
+void clearCommands(char **cg){
+  free(cg[1]);
+  free(cg[0]);
+  cg[0] = newString();
+  cg[1] = newString();
 }

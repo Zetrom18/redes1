@@ -1,12 +1,26 @@
 #include "master.h"
 
 void test(){
-  lls("", "l");
+  lls("", "");
+  lls("", "");
+  lls("", "");
+  lls("", "");
+  lls("", "");
+  lls("", "");
+  lls("", "");
+  lls("", "");
   lcd("my-test-dir");
   lls(".", NULL);
   lcd("failed-dir");
   lls("/home", "al");
-  mount_messages("hahaha");
+  lcd(".");
+  lcd(".");
+  lcd(".");
+  lcd(".");
+  lcd(".");
+  lcd(".");
+  lcd(".");
+  // mount_messages("hahaha");
 }
 
 void lls(char *dir, char *opt){
@@ -33,14 +47,38 @@ void init() {
   CURR_DIR[1] = '\0';
   puts("Inicializando mestre...");
   // ConexaoRawSocket(ADDR);
-  test();
+  // test();
   puts("Mestre inicializado com sucesso");
   controller();
 }
 
+void help(){
+  puts("SOON TO BE");
+}
+
 void controller(){
+  char c;
+  int c_count = 0;
+  char *commandGroup[2];
+  commandGroup[c_count] = newString();
   while (true) {
-    /* code */
+    c = getchar();
+    if (c_count == 0 && c == ' '){
+      c_count++;
+      commandGroup[c_count] = newString();
+    } else if (c == '\n'){
+      if (false) {
+        /* code */
+      } else if (false) {
+        /* code */
+      } else {
+        help();
+      }
+      clearCommands(commandGroup);
+      c_count = 0;
+    } else {
+      appendChar(commandGroup[c_count], c);
+    }
   }
 }
 
