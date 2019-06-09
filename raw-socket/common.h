@@ -9,6 +9,8 @@
 #include <limits.h>
 #include <dirent.h>
 #include <assert.h>
+#include "messenger.h"
+#include "crs.h"
 
 char *newString();
 void concat(char *, char *);

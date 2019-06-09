@@ -78,8 +78,8 @@ def encode():
 
     with open("hamming_encoded.txt", "w") as f:
         while len(encoded_message) > 0:
-            f.write(encoded_message[:7])
-            encoded_message = encoded_message[7:]
+            f.write(encoded_message[:15])
+            encoded_message = encoded_message[15:]
             f.write(" ")
     print('Salvo como "hamming_encoded.txt"')
 
