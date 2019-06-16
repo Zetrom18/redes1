@@ -44,7 +44,7 @@ void init() {
 void controller(int socket){
   void *buffer = malloc(30000);
   while (true) {
-    recv(socket, buffer, sizeof(buffer), NULL);
+    recv(socket, buffer, sizeof(buffer), 0);
   }
 }
 

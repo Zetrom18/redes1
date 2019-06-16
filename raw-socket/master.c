@@ -52,7 +52,7 @@ void controller(int socket){
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
   while (true) {
-    send(socket, "1", 2, NULL);
+    send(socket, "1", 2, 0);
     // c = getchar();
     // if (c_count == 0 && c == ' '){
     //   c_count++;
