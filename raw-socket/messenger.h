@@ -16,8 +16,8 @@ void string_to_bin_array(char *string, int string_size, int *out);
 void int_to_bin_array(int in, int count, int *out);
 void print_bit_array(int* array, int size);
 
-void fill_crc(int *message);
-void fill_data(int *message, int* data_bits);
+void fill_crc(int *message, int data_size);
+void fill_data(int *message, int* data_bits, int data_start, int data_size);
 void fill_type(int *message, int type);
 void fill_sequence(int *message, int sequence);
 void fill_size(int *message, int size);

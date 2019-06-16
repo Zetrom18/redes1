@@ -1,6 +1,6 @@
 #include "master.h"
 
-void test(){
+void test_ls_cd(){
   lls("", "");
   lls("", "");
   lls("", "");
@@ -23,6 +23,10 @@ void test(){
   // mount_messages("hahaha");
 }
 
+void test() {
+   mount_messages(listCurrentFiles(".", "", false));
+}
+
 void lls(char *dir, char *opt){
   if (strcmp(dir,"")==0){
     puts(listCurrentFiles(CURR_DIR, opt, false));
@@ -30,9 +34,9 @@ void lls(char *dir, char *opt){
     puts(listCurrentFiles(dir, opt, false));
   } else {
     char* buffer = newString();
-    concat(buffer, CURR_DIR);
-    concat(buffer, "/");
-    concat(buffer, dir);
+    buffer = concat(buffer, CURR_DIR);
+    buffer = concat(buffer, "/");
+    buffer = concat(buffer, dir);
     puts(listCurrentFiles(buffer, opt, false));
     free(buffer);
   }
@@ -43,11 +47,11 @@ void lcd(char *path){
 }
 
 void init() {
+  test();
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando mestre...");
   // ConexaoRawSocket(ADDR);
-  // test();
   puts("Mestre inicializado com sucesso");
   controller();
 }

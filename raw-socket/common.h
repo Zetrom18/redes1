@@ -13,7 +13,7 @@
 #include "crs.h"
 
 char *newString();
-void concat(char *, char *);
+char *concat(char* str1, char* str2);
 void updateCurrDir(char *path);
 char *listCurrentFiles(char *, char *, bool);
 
