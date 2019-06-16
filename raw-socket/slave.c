@@ -46,7 +46,7 @@ void controller(int socket){
   while (true) {
     puts("while start");
     recv(socket, buffer, sizeof(buffer), 0);
-    // printf("%s\n", buffer);
+    printf("%s\n", buffer);
     puts("while end");
   }
 }

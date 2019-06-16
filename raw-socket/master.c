@@ -51,9 +51,10 @@ void controller(int socket){
   // int c_count = 0;
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
+  char *str = "1";
   while (true) {
     puts("while start");
-    send(socket, "1", 2, 0);
+    send(socket, str, sizeof(str), 0);
     puts("while end");
     // c = getchar();
     // if (c_count == 0 && c == ' '){
