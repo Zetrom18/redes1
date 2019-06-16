@@ -75,6 +75,5 @@ void controller(int socket){
 
 int main(int argc, char const *argv[]) {
   init();
-  controller();
   return 0;
 }
