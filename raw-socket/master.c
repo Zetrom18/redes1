@@ -52,9 +52,12 @@ void controller(int socket){
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
   char *str = "1";
+  int count = 0;
   while (true) {
     puts("while start");
     send(socket, str, sizeof(str), 0);
+    count++;
+    printf("Sent %d\n", count);
     puts("while end");
     // c = getchar();
     // if (c_count == 0 && c == ' '){

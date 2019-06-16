@@ -43,10 +43,12 @@ void init() {
 
 void controller(int socket){
   void *buffer = malloc(30000);
+  int count = 0;
   while (true) {
     puts("while start");
     recv(socket, buffer, sizeof(buffer), 0);
-    printf("%s\n", buffer);
+    count++;
+    printf("Message %d %s\n", count, buffer);
     puts("while end");
   }
 }
