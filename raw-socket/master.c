@@ -31,43 +31,45 @@ void lcd(char *path){
 }
 
 void init() {
+  int socket;
   test_ls_cd();
   test();
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando mestre...");
-  ConexaoRawSocket(ADDR);
+  socket = ConexaoRawSocket(ADDR);
   puts("Mestre inicializado com sucesso");
-  controller();
+  controller(socket);
 }
 
 void help(){
   puts("SOON TO BE");
 }
 
-void controller(){
-  char c;
-  int c_count = 0;
-  char *commandGroup[2];
-  commandGroup[c_count] = newString();
+void controller(int socket){
+  // char c;
+  // int c_count = 0;
+  // char *commandGroup[2];
+  // commandGroup[c_count] = newString();
   while (true) {
-    c = getchar();
-    if (c_count == 0 && c == ' '){
-      c_count++;
-      commandGroup[c_count] = newString();
-    } else if (c == '\n'){
-      if (false) {
-        /* code */
-      } else if (false) {
-        /* code */
-      } else {
-        help();
-      }
-      clearCommands(commandGroup);
-      c_count = 0;
-    } else {
-      appendChar(commandGroup[c_count], c);
-    }
+    send(socket, "1", 2, NULL);
+    // c = getchar();
+    // if (c_count == 0 && c == ' '){
+    //   c_count++;
+    //   commandGroup[c_count] = newString();
+    // } else if (c == '\n'){
+    //   if (false) {
+    //     /* code */
+    //   } else if (false) {
+    //     /* code */
+    //   } else {
+    //     help();
+    //   }
+    //   clearCommands(commandGroup);
+    //   c_count = 0;
+    // } else {
+    //   appendChar(commandGroup[c_count], c);
+    // }
   }
 }
 

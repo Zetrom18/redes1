@@ -8,6 +8,6 @@
 void lls(char *, char *);
 void lcd(char *);
 void init();
-void controller();
+void controller(int socket);
 
 #endif

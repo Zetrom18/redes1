@@ -31,18 +31,20 @@ char *cd(char *path){
 }
 
 void init() {
+  int socket;
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando escravo...");
-  ConexaoRawSocket(ADDR);
+  socket = ConexaoRawSocket(ADDR);
   test();
   puts("Escravo inicializado com sucesso");
-  controller();
+  controller(socket);
 }
 
-void controller(){
+void controller(int socket){
+  void *buffer = malloc(30000);
   while (true) {
-    /* code */
+    recv(socket, buffer, sizeof(buffer), NULL);
   }
 }
 
