@@ -34,7 +34,7 @@ void init() {
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando escravo...");
-  // ConexaoRawSocket(ADDR);
+  ConexaoRawSocket(ADDR);
   test();
   puts("Escravo inicializado com sucesso");
   controller();

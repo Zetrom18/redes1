@@ -10,6 +10,8 @@
 #define MAX_DATA_BIT_COUNT 64
 #define MAX_SEQUENCE_VALUE 32
 
+#include "crc.h"
+
 // unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
 void mount_messages(char *data);
 void string_to_bin_array(char *string, int string_size, int *out);

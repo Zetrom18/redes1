@@ -85,24 +85,12 @@ void fill_data(int *message, int* data_bits, int data_start, int data_size){
 	fill_array(message, start_bit, temp_data_bits, data_size);
 }
 
-//int gencrc(int *data, int len)
-//{
-//    int crc = 0xff;
-//    int i, j;
-//    for (i = 0; i < len; i++) {
-//        crc ^= data[i];
-//        for (j = 0; j < 8; j++) {
-//            if ((crc & 0x80) != 0)
-//                crc = (int)((crc << 1) ^ 0x31);
-//            else
-//                crc <<= 1;
-//        }
-//    }
-//    return crc;
-//}
-
 void fill_crc(int *message, int data_size){
-	int start_bit = BEGIN_BIT_COUNT + SIZE_BIT_COUNT + SEQ_BIT_COUNT + TYPE_BIT_COUNT + data_size;
+	int start_bit = BEGIN_BIT_COUNT + SIZE_BIT_COUNT + data_size;
+    int *crc = (int*)calloc(CRC_SIZE, sizeof(int)*(CRC_SIZE));
+    calculate_crc(message, start_bit, crc);
+
+    fill_array(message, start_bit, crc, CRC_SIZE);
 
 }
 
@@ -130,22 +118,28 @@ void mount_messages(char *data){
 				current_data_size = MAX_DATA_BIT_COUNT;
 			}
 
-            int message_size = 18 + current_data_size;
-            messages[current_message_index] = (int *) malloc(message_size * sizeof(int));
+            int size = CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT + current_data_size;
+			int message_size = size + BEGIN_BIT_COUNT + SIZE_BIT_COUNT;
+            messages[current_message_index] = (int *) malloc((message_size)* sizeof(int));
             // BEGIN MARKER
 			fill_begin_marker(messages[current_message_index]);
+//			print_bit_array(messages[current_message_index], message_size);
 			// SIZE
-			fill_size(messages[current_message_index], message_size);
+			fill_size(messages[current_message_index], size);
+//			print_bit_array(messages[current_message_index], message_size);
 			// SEQUENCE
 			fill_sequence(messages[current_message_index], sequence);
+//			print_bit_array(messages[current_message_index], message_size);
 			// TYPE
 			fill_type(messages[current_message_index], 0); //?
+//			print_bit_array(messages[current_message_index], message_size);
 			// DATA
 			fill_data(messages[current_message_index], bin_data, current_data_start, current_data_size);
+//			print_bit_array(messages[current_message_index], message_size);
 			//CRC
-			fill_crc(messages[current_message_index], message_size);
+			fill_crc(messages[current_message_index], size - CRC_BIT_COUNT);
 
-			printf("sequence %d, message: ", sequence);
+			printf("sequence %d, message (size %d bits): ", sequence, size);
 			print_bit_array(messages[current_message_index], message_size);
 		}
 	}
