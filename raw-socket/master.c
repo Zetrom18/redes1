@@ -1,4 +1,5 @@
 #include "master.h"
+#include <unistd.h>
 
 void test_ls_cd(){
   lcd("my-test-dir");
@@ -54,6 +55,7 @@ void controller(int socket){
   char *str = "1";
   int count = 0;
   while (true) {
+    sleep(10);
     puts("while start");
     send(socket, str, sizeof(str), 0);
     count++;

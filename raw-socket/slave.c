@@ -48,7 +48,7 @@ void controller(int socket){
     puts("while start");
     recv(socket, buffer, sizeof(buffer), 0);
     count++;
-    printf("Message %d %s\n", count, buffer);
+    printf("Message %d %s\n", count, (char *)buffer);
     puts("while end");
   }
 }
