@@ -1,26 +1,10 @@
 #include "master.h"
 
 void test_ls_cd(){
-  lls("", "");
-  lls("", "");
-  lls("", "");
-  lls("", "");
-  lls("", "");
-  lls("", "");
-  lls("", "");
-  lls("", "");
   lcd("my-test-dir");
   lls(".", NULL);
   lcd("failed-dir");
   lls("/home", "al");
-  lcd(".");
-  lcd(".");
-  lcd(".");
-  lcd(".");
-  lcd(".");
-  lcd(".");
-  lcd(".");
-  // mount_messages("hahaha");
 }
 
 void test() {
@@ -47,11 +31,12 @@ void lcd(char *path){
 }
 
 void init() {
+  test_ls_cd();
   test();
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
   puts("Inicializando mestre...");
-  // ConexaoRawSocket(ADDR);
+  ConexaoRawSocket(ADDR);
   puts("Mestre inicializado com sucesso");
   controller();
 }

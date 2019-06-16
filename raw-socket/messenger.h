@@ -3,13 +3,15 @@
 
 #define BEGIN_BIT_COUNT 8
 #define SIZE_BIT_COUNT 6
-#define SEQ_BIT_COUNT 5 
+#define SEQ_BIT_COUNT 5
 #define TYPE_BIT_COUNT 5
 #define CRC_BIT_COUNT 8
 
 #define MAX_DATA_BIT_COUNT 64
 #define MAX_SEQUENCE_VALUE 32
 
+#include <stdio.h>
+#include <string.h>
 #include "crc.h"
 
 // unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};

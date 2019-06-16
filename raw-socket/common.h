@@ -16,6 +16,8 @@ char *newString();
 char *concat(char* str1, char* str2);
 void updateCurrDir(char *path);
 char *listCurrentFiles(char *, char *, bool);
+void appendChar(char *, char);
+void clearCommands(char **);
 
 char CURR_DIR[PATH_MAX];
 
