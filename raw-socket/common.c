@@ -39,8 +39,7 @@ char *listCurrentFiles(char *dir_path, char *opt, bool fake) {
 
     DIR *dr = opendir(dir_path);
     if (!dr) {
-        puts("Nao foi possivel acessar diretorio");
-        return NULL;
+        return "Nao foi possivel acessar diretorio";
     }
 
     if (fake){
