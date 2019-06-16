@@ -27,3 +27,17 @@ void calculate_crc(int* data, int data_size, int* crc){
 
   free(buffer);
 }
+
+bool check_crc(int* data, int data_size, int* crc){
+  int i;
+
+  calculate_crc(data, data_size, crc);
+
+  for(i=0; i<CRC_SIZE; i++){
+    if(crc[i]==1){
+      return false;
+    }
+  }
+
+  return true;
+}
