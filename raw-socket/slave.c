@@ -44,7 +44,10 @@ void init() {
 void controller(int socket){
   void *buffer = malloc(30000);
   while (true) {
+    puts("while start");
     recv(socket, buffer, sizeof(buffer), 0);
+    // printf("%s\n", buffer);
+    puts("while end");
   }
 }
 
