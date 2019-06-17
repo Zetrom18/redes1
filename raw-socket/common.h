@@ -18,6 +18,7 @@ void updateCurrDir(char *path);
 char *listCurrentFiles(char *, char *, bool);
 void appendChar(char *, char);
 void clearCommands(char **);
+void showbits(unsigned int);
 
 char CURR_DIR[PATH_MAX];
 

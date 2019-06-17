@@ -42,13 +42,22 @@ void init() {
 }
 
 void controller(int socket){
-  void *buffer = malloc(30000);
+  unsigned char buffer[92];
   int count = 0;
+  int i, len = 0;
   while (true) {
+    memset(&buffer, 0, sizeof(buffer));
     puts("while start");
-    recv(socket, buffer, sizeof(buffer), 0);
-    count++;
-    printf("Message %d %s\n", count, (char *)buffer);
+    len = recv(socket, &buffer, sizeof(buffer), 0);
+    if(len > 0){
+      // count++;
+      printf("\nMessage %d (size %d):\n", count, len);
+      for(i=0; i<len; i++){
+        showbits(buffer[i]);
+      }
+        // printf("%02x", buffer[i]);
+      // puts("");
+    }
     puts("while end");
   }
 }
