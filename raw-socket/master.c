@@ -52,15 +52,16 @@ void controller(int socket){
   // int c_count = 0;
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
-  char *str = "1";
+  // char str[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
+  int str[] = {1,2,3,4,5,6,7,8,9};
   int count = 0;
   while (true) {
-    sleep(10);
     puts("while start");
     send(socket, str, sizeof(str), 0);
     count++;
     printf("Sent %d\n", count);
     puts("while end");
+    sleep(10);
     // c = getchar();
     // if (c_count == 0 && c == ' '){
     //   c_count++;
