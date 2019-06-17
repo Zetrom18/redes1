@@ -46,13 +46,14 @@ void controller(int socket){
   int count = 0;
   int i, len = 0;
   while (true) {
+    memset(&buffer, 0, sizeof(buffer));
     puts("while start");
     len = recv(socket, &buffer, sizeof(buffer), 0);
     if(len > 0){
       count++;
       printf("Message %d ", count);
-      for(i=0; i<len; i++)
-        printf("%c", buffer[i]);
+      for(i=20; i<len; i++)
+        printf("%02x ", buffer[i]);
       puts("");
     }
     puts("while end");
