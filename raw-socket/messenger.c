@@ -92,23 +92,23 @@ void fill_crc(int *message, int data_size){
 void mount_command(int command, int *message){
 
 	int command_size = CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT;
-	switch (command){
-		case ACK:
-		case NACK:
-		case OK:
-		case ERROR:
-		case END_TX:
-		case SHOW:
-		case CD:
-		case LS:
-		case GET:
-		case PUT:
-			generate_message(message, command_size,  , command, NULL, 0);
-			break;
+//	switch (command){
+//		case ACK:
+//		case NACK:
+//		case OK:
+//		case ERROR:
+//		case END_TX:
+//		case SHOW:
+//		case CD:
+//		case LS:
+//		case GET:
+//		case PUT:
+	generate_message(message, command_size, 0 , command, NULL, 0);
+//			break;
 
-		case DESCRIPTOR:
-			break;
-	}
+//		case DESCRIPTOR:
+//			break;
+//	}
 }
 
 void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size){
