@@ -54,10 +54,11 @@ void controller(int socket){
   // commandGroup[c_count] = newString();
   // char str[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
   // int str[] = {1,2,3,4,5,6,7,8,9};
+  unsigned char str[] = 0x00ff;
   int count = 0;
   while (true) {
     puts("while start");
-    send(socket, &count, sizeof(count), 0);
+    send(socket, &str, sizeof(str), 0);
     count++;
     printf("Sent %d\n", count);
     puts("while end");

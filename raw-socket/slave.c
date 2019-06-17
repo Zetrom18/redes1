@@ -42,7 +42,7 @@ void init() {
 }
 
 void controller(int socket){
-  int buffer;
+  unsigned char buffer;
   int count = 0;
   int i, len = 0;
   while (true) {
@@ -51,7 +51,11 @@ void controller(int socket){
     len = recv(socket, &buffer, sizeof(buffer), 0);
     if(len > 0){
       count++;
-      printf("\nMessage %d (size %d): %d", count, len, (int)buffer);
+      printf("\nMessage %d (size %d): ", count, len;
+      for(i=0; i<len; i++){
+        printf("%x ", buffer[i]);
+      }
+      puts("");
     }
     puts("while end");
   }
