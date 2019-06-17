@@ -7,6 +7,7 @@ char *newString(){
     return str;
 }
 
+
 char *concat(char* str1, char* str2) {
     char *new_string = (char *) malloc((strlen(str1) + strlen(str2) + 1) * sizeof(char));
     assert(new_string);
@@ -85,4 +86,11 @@ void clearCommands(char **cg){
     free(cg[0]);
     cg[0] = newString();
     cg[1] = newString();
+}
+
+void showbits(unsigned int x) {
+    for(int i = (sizeof(int) * 8) - 1; i >= 0; i--) {
+       putchar(x & (1u << i) ? '1' : '0');
+    }
+    printf("\n");
 }
