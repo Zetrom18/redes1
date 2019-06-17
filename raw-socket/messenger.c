@@ -74,15 +74,10 @@ void fill_type(int *message, int type){
 	fill_array(message, start_bit, type_binary, TYPE_BIT_COUNT);
 }
 
-void fill_data(int *message, int* data_bits, int data_start, int data_size){
+void fill_data(int *message, int* data_bits, int data_size){
 	int start_bit = BEGIN_BIT_COUNT + SIZE_BIT_COUNT + SEQ_BIT_COUNT + TYPE_BIT_COUNT;
-	int temp_data_bits[MAX_DATA_BIT_COUNT];
 
-	for (int i = 0; i < data_size; i++){
-		temp_data_bits[i] = data_bits[data_start + i];
-	}
-
-	fill_array(message, start_bit, temp_data_bits, data_size);
+	fill_array(message, start_bit, data_bits, data_size);
 }
 
 void fill_crc(int *message, int data_size){
@@ -94,10 +89,47 @@ void fill_crc(int *message, int data_size){
 
 }
 
-void mount_messages(char *data){
-	int data_size = strlen(data);
-	int data_bit_array_size = (int)data_size * sizeof(char *);
+void mount_command(int command, int *message){
 
+	int command_size = CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT;
+	switch (command){
+		case ACK:
+		case NACK:
+		case OK:
+		case ERROR:
+		case END_TX:
+		case SHOW:
+		case CD:
+		case LS:
+		case GET:
+		case PUT:
+			generate_message(message, command_size,  , command, NULL, 0);
+			break;
+
+		case DESCRIPTOR:
+			break;
+	}
+}
+
+void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size){
+	// BEGIN MARKER
+	fill_begin_marker(message);
+	// SIZE
+	fill_size(message, size);
+	// SEQUENCE
+	fill_sequence(message, sequence);
+	// TYPE
+	fill_type(message, type);
+	// DATA
+	fill_data(message, bin_data, data_size);
+	//CRC
+	fill_crc(message, size - CRC_BIT_COUNT);
+}
+
+void mount_data_messages(char *data){
+	int data_size = strlen(data);
+
+	int data_bit_array_size = (int)data_size * sizeof(char *);
 	int bin_data[data_bit_array_size];
 	string_to_bin_array(data, data_size, bin_data);
 	// print_bit_array(bin_data, data_bit_array_size);
@@ -107,9 +139,12 @@ void mount_messages(char *data){
 	printf("mandando %d mensagens, %d sequencias completas\n", messages_count, sequences_count);
 
 	int **messages = (int **) malloc(messages_count * sizeof(int*));
+	int sequence = 0;
 
 	for (int sequences = 0; sequences <= sequences_count; sequences++){
-		for (int sequence = 0; (sequence < MAX_SEQUENCE_VALUE) && (sequence <= messages_count); sequence++){
+		if (sequences > 0)
+			sequence = 0;
+		for (sequence; (sequence < MAX_SEQUENCE_VALUE) && (sequence <= messages_count); sequence++){
 			int current_message_index = sequences * MAX_SEQUENCE_VALUE + sequence;
 			int current_data_start = current_message_index * MAX_DATA_BIT_COUNT;
 			int current_data_size = data_bit_array_size - current_data_start;
@@ -118,27 +153,16 @@ void mount_messages(char *data){
 				current_data_size = MAX_DATA_BIT_COUNT;
 			}
 
+			int current_bin_data[MAX_DATA_BIT_COUNT];
+
+			for (int i = 0; i < data_size; i++){
+				current_bin_data[i] = bin_data[current_data_start + i];
+			}
+
             int size = CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT + current_data_size;
 			int message_size = size + BEGIN_BIT_COUNT + SIZE_BIT_COUNT;
             messages[current_message_index] = (int *) malloc((message_size)* sizeof(int));
-            // BEGIN MARKER
-			fill_begin_marker(messages[current_message_index]);
-//			print_bit_array(messages[current_message_index], message_size);
-			// SIZE
-			fill_size(messages[current_message_index], size);
-//			print_bit_array(messages[current_message_index], message_size);
-			// SEQUENCE
-			fill_sequence(messages[current_message_index], sequence);
-//			print_bit_array(messages[current_message_index], message_size);
-			// TYPE
-			fill_type(messages[current_message_index], 0); //?
-//			print_bit_array(messages[current_message_index], message_size);
-			// DATA
-			fill_data(messages[current_message_index], bin_data, current_data_start, current_data_size);
-//			print_bit_array(messages[current_message_index], message_size);
-			//CRC
-			fill_crc(messages[current_message_index], size - CRC_BIT_COUNT);
-
+            generate_message(messages[current_message_index], size, sequence, DATA, current_bin_data, current_data_size);
 			printf("sequence %d, message (size %d bits): ", sequence, size);
 			print_bit_array(messages[current_message_index], message_size);
 		}

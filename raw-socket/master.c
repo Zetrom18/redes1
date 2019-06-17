@@ -9,7 +9,7 @@ void test_ls_cd(){
 }
 
 void test() {
-   mount_messages(listCurrentFiles(".", "", false));
+    mount_data_messages(listCurrentFiles(".", "", false));
 }
 
 void lls(char *dir, char *opt){

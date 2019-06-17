@@ -6,7 +6,7 @@ void test(){
   puts(ls(".", NULL));
   cd("failed-dir");
   puts(ls("/home", "a"));
-  mount_messages("hahaha");
+  mount_data_messages("hahaha");
 }
 
 char *ls(char *dir, char *opt){
