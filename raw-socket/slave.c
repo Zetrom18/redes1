@@ -42,7 +42,7 @@ void init() {
 }
 
 void controller(int socket){
-  unsigned int buffer[10];
+  unsigned char buffer[92];
   int count = 0;
   int i, len = 0;
   while (true) {
@@ -54,7 +54,7 @@ void controller(int socket){
       printf("\nMessage %d (size %d):\n", count, len);
       for(i=0; i<len; i++){
         showbits(buffer[i]);
-      //   printf("%x ", buffer[i]);
+        // printf("%02x", buffer[i]);
       }
       // puts("");
     }

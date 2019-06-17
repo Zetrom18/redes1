@@ -59,7 +59,7 @@ void controller(int socket){
   printf("%d\n", 0xff);
   while (true) {
     puts("while start");
-    send(socket, &str, sizeof(str), 0);
+    printf("%d\n", send(socket, &str, sizeof(str), 0));
     count++;
     printf("Sent %d\n", count);
     puts("while end");
