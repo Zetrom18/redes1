@@ -89,7 +89,7 @@ void clearCommands(char **cg){
 }
 
 void showbits(unsigned int x) {
-    for(int i = (sizeof(int) * 8) - 1; i >= 0; i--) {
+    for(int i = sizeof(int) - 1; i >= 0; i--) {
        putchar(x & (1u << i) ? '1' : '0');
     }
     printf("\n");

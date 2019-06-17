@@ -54,7 +54,7 @@ void controller(int socket){
   // commandGroup[c_count] = newString();
   // char str[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
   // int str[] = {1,2,3,4,5,6,7,8,9};
-  unsigned int str[] = {0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7};
+  unsigned int str[] = {255,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7};
   int count = 0;
   printf("%d\n", 0xff);
   while (true) {
