@@ -52,8 +52,8 @@ void controller(int socket){
     if(len > 0){
       // count++;
       printf("\nMessage %d (size %d):\n", count, len);
-      for(i=0; i<len; i++){
-        showbits(buffer[i]);
+      // for(i=0; i<len; i++){
+      showbits(buffer);
         // printf("%02x", buffer[i]);
       }
       // puts("");
