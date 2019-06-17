@@ -54,7 +54,7 @@ void controller(int socket){
   // commandGroup[c_count] = newString();
   // char str[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
   // int str[] = {1,2,3,4,5,6,7,8,9};
-  unsigned char str[] = 0x00ff;
+  unsigned char str[] = {0x0f};
   int count = 0;
   while (true) {
     puts("while start");
