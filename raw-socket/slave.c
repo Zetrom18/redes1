@@ -51,8 +51,8 @@ void controller(int socket){
     len = recv(socket, &buffer, sizeof(buffer), 0);
     if(len > 0){
       count++;
-      printf("Message %d ", count);
-      for(i=20; i<len; i++)
+      printf("Message %d (size %d)", count, len);
+      for(i=0; i<len; i++)
         printf("%02x ", buffer[i]);
       puts("");
     }
