@@ -9,7 +9,7 @@ void test_ls_cd(){
 }
 
 void test() {
-    mount_data_messages(listCurrentFiles(".", "", false));
+    mount_data_messages(listCurrentFiles(".", "", true));
 }
 
 void lls(char *dir, char *opt){
@@ -33,7 +33,7 @@ void lcd(char *path){
 
 void init() {
   int socket;
-  test_ls_cd();
+//  test_ls_cd();
   test();
   CURR_DIR[0] = '.';
   CURR_DIR[1] = '\0';
@@ -54,11 +54,16 @@ void controller(int socket){
   // commandGroup[c_count] = newString();
   // char str[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
   // int str[] = {1,2,3,4,5,6,7,8,9};
-  unsigned int str[] = {126};
+  unsigned short int str[] = {255, 255, 255, 0, 0, 0, 0, 7, 7, 7, 7 ,7, 7, 6};
   int count = 0;
   while (true) {
     puts("while start");
-    printf("%d\n", send(socket, &str, sizeof(str), 0));
+    ssize_t sent_count = send(socket, str, sizeof(str), 0);
+    if (sent_count < 0){
+      perror("send() error");
+      exit(-1);
+    }
+    printf("%d\n", sent_count);
     count++;
     printf("Sent %d\n", count);
     puts("while end");

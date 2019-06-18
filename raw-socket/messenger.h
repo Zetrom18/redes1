@@ -14,19 +14,32 @@
 #include <string.h>
 #include "crc.h"
 
-const int ACK = 0;//{0,0,0,0,0};
-const int SHOW = 9;//{0,1,0,0,1};
-const int CD = 4;//{0,0,1,0,0};
-const int LS = 8;//{0,1,0,0,0};
-const int OK = 7;//{0,0,1,1,1};
-const int ERROR = 10;//{0,1,0,1,0};
-const int END_TX = 14;//{0,1,1,1,0};
-const int NACK = 31;//{1,1,1,1,1};
-const int GET = 16;//{1,0,0,0,0};
-const int DESCRIPTOR= 17;//{1,0,0,0,1};
-const int DATA = 3;//{0,0,0,1,1};
-const int PUT = 2;//{0,0,0,1,0};
-const int CHAT = 18;//{1,0,0,1,0};
+//{0,0,0,0,0};
+#define ACK 0
+//{0,1,0,0,1};
+#define SHOW 9
+//{0,0,1,0,0};
+#define CD 4
+//{0,1,0,0,0};
+#define LS 8
+//{0,0,1,1,1};
+#define OK 7
+//{0,1,0,1,0};
+#define ERROR 10
+//{0,1,1,1,0};
+#define END_TX 14
+//{1,1,1,1,1};
+#define NACK 31
+//{1,0,0,0,0};
+#define GET 16
+//{1,0,0,0,1};
+#define DESCRIPTO 17
+//{0,0,0,1,1};
+#define DATA 3
+//{0,0,0,1,0};
+#define PUT 2
+//{1,0,0,1,0};
+#define CHAT 18
 
 // unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
 void mount_command(int command, int *message);

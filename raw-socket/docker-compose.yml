@@ -4,13 +4,17 @@ services:
   master:
     container_name: master
     build:
-#        user: root
-        context: ./
-        dockerfile: ./Dockerfile
+#      user: root
+      context: ./
+      dockerfile: ./Dockerfile
+    command: ./master
+    tty: true
+    stdin_open: true
 
   server:
     container_name: server
     build:
-#        user: root
-        context: ./      
-        dockerfile: ./Dockerfile
+#      user: root
+      context: ./
+      dockerfile: ./Dockerfile
+    command: ./slave

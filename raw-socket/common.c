@@ -44,7 +44,7 @@ char *listCurrentFiles(char *dir_path, char *opt, bool fake) {
     }
 
     if (fake){
-        return "";
+        return "bom dia";
     }
 
     char *buffer = newString();

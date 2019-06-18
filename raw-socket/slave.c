@@ -42,7 +42,7 @@ void init() {
 }
 
 void controller(int socket){
-  unsigned char buffer[1024];
+  unsigned short int buffer[28];
   int count = 0;
   int i, len = 0;
   while (true) {
