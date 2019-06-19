@@ -1,6 +1,8 @@
 #ifndef __MESSENGER_H__
 #define __MESSENGER_H__
 
+#define INT_BEGIN_MARKER 126
+
 #define BEGIN_BIT_COUNT 8
 #define SIZE_BIT_COUNT 6
 #define SEQ_BIT_COUNT 5
