@@ -6,6 +6,7 @@
 #define RAW_SOCKET_PARSER_H
 
 #include "crc.h"
+#include "message.h"
 
 int *parse_size(int *buffer);
 int get_int(int *buffer, int start, int size);
