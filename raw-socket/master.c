@@ -109,6 +109,7 @@ void controller(int socket){
      }
     send_message(socket, message);
   }
+
 }
 
 int main(int argc, char const *argv[]) {
