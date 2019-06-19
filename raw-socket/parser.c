@@ -9,16 +9,26 @@ bool parse_message(int *buffer, int *size, int *sequence, int *type, int *data_s
   if(get_int(buffer, pointer, BEGIN_BIT_COUNT) != INT_BEGIN_MARKER){
     return false;
   }
+  printf("pointer: %d\n", pointer);
   pointer += BEGIN_BIT_COUNT;
+  printf("pointer: %d\n", pointer);
   *size = get_int(buffer, pointer, SIZE_BIT_COUNT);
+  printf("size: %d\n", *size);
   pointer += SIZE_BIT_COUNT;
+  printf("pointer: %d\n", pointer);
   *sequence = get_int(buffer, pointer, SEQ_BIT_COUNT);
+  printf("sequence: %d\n", *sequence);
   pointer += SEQ_BIT_COUNT;
+  printf("pointer: %d\n", pointer);
   *type = get_int(buffer, pointer, TYPE_BIT_COUNT);
+  printf("type: %d\n", *type);
   pointer += TYPE_BIT_COUNT;
+  printf("pointer: %d\n", pointer);
   *data_size = *size - (CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT);
+  printf("data_size: %d\n", *data_size);
   bin_data = get_sub_array(buffer, pointer, *data_size);
   pointer += *data_size;
+  printf("pointer: %d\n", pointer);
   int *crc = get_sub_array(buffer, pointer, CRC_BIT_COUNT);
   if(!check_crc(buffer, pointer, crc)){
     free(crc);
