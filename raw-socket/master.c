@@ -48,16 +48,14 @@ void help(){
 }
 
 void controller(int socket){
-  // char c;
-  // int c_count = 0;
-  // char *commandGroup[2];
-  // commandGroup[c_count] = newString();
-  // int **messages = mount_data_messages("Qualquer coisa ble bla bla");
+  char c;
+  int c_count = 0;
+  char *commandGroup[2];
+  commandGroup[c_count] = newString();
   int **messages = mount_data_messages(listCurrentFiles(".", "", false));
 
   int *message =  messages[0];
   int *array = message;
-  // int array[] = {0,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0};
   unsigned char *bytes = bin_array_to_bytes(array, MAX_MESSAGE_BIT_COUNT);
   int count = 0;
   while (true) {
@@ -72,24 +70,24 @@ void controller(int socket){
     printf("Sent %d\n", count);
     puts("while end");
     sleep(10);
-    // c = getchar();
-    // if (c_count == 0 && c == ' '){
-    //   c_count++;
-    //   commandGroup[c_count] = newString();
-    // } else if (c == '\n'){
-    //   if (false) {
-    //     /* code */
-    //   } else if (false) {
-    //     /* code */
-    //   } else {
-    //     help();
-    //   }
-    //   clearCommands(commandGroup);
-    //   c_count = 0;
-    // } else {
-    //   appendChar(commandGroup[c_count], c);
-    // }
-  }
+  //   c = getchar();
+  //   if (c_count == 0 && c == ' '){
+  //     c_count++;
+  //     commandGroup[c_count] = newString();
+  //   } else if (c == '\n'){
+  //     if (false) {
+  //       /* code */
+  //     } else if (false) {
+  //       /* code */
+  //     } else {
+  //       help();
+  //     }
+  //     clearCommands(commandGroup);
+  //     c_count = 0;
+  //   } else {
+  //     appendChar(commandGroup[c_count], c);
+  //   }
+  // }
 }
 
 int main(int argc, char const *argv[]) {

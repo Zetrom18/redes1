@@ -48,7 +48,7 @@ int *get_sub_array(int *array, int start, int size){
 unsigned char *get_string(int *buffer, int start, int size){
   unsigned char *string = (unsigned char *)calloc((size/8)+1, sizeof(unsigned char));
   for(int i = 0; i<size; i++){
-    string[i] = get_int(buffer, start+(i*8), 8);
+    string[i] = get_int(buffer, start+(i*8), 8)+'0';
   }
   string[size] = '\0';
   return string;
