@@ -35,10 +35,6 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
     }
 		bits[i] = (bytes[j] & int_pow(2,(7 - (i % 8)))) / int_pow(2,(7 - (i % 8)));
 	}
-	puts("\n================= PRINTING BIN ARRAY ====================");
-	for(i=0; i<MAX_BIT_COUNT; i++){
-		printf("%d ", bits[i]);
-	}
 }
 
 void string_to_bin_array(char *string, int string_size, int *out){
@@ -119,10 +115,10 @@ void fill_data(int *message, int* data_bits, int data_size){
 
 void fill_crc(int *message, int data_size){
 	int start_bit = BEGIN_BIT_COUNT + SIZE_BIT_COUNT + data_size;
-    int *crc = (int*)calloc(CRC_SIZE, sizeof(int)*(CRC_SIZE));
-    calculate_crc(message, start_bit, crc);
+  int *crc = (int*)calloc(CRC_SIZE, sizeof(int)*(CRC_SIZE));
+  calculate_crc(message, start_bit, crc);
 
-    fill_array(message, start_bit, crc, CRC_SIZE);
+  fill_array(message, start_bit, crc, CRC_SIZE);
 }
 
 void mount_command(int command, int *message){

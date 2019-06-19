@@ -4,22 +4,44 @@
 
 #include "parser.h"
 
-int *parse_size(unsigned char *buffer);
-
-int get_int(unsigned char *buffer, int i, int i1);
-
-void parse_message(unsigned char *buffer, int *size, int *sequence, int *type, int *bin_data, int *data_size){
-    int begin_marker = get_int(buffer, 0, BEGIN_BIT_COUNT);
-
-
-
+bool parse_message(int *buffer, int *size, int *sequence, int *type, int *data_size, int *bin_data){
+  int pointer = 0;
+  if(get_int(buffer, pointer, BEGIN_BIT_COUNT) != INT_BEGIN_MARKER){
+    return false;
+  }
+  pointer += BEGIN_BIT_COUNT;
+  *size = get_int(buffer, pointer, SIZE_BIT_COUNT);
+  pointer += SIZE_BIT_COUNT;
+  *sequence = get_int(buffer, pointer, SEQ_BIT_COUNT);
+  pointer += SEQ_BIT_COUNT;
+  *type = get_int(buffer, pointer, TYPE_BIT_COUNT);
+  pointer += TYPE_BIT_COUNT;
+  *data_size = *size - (CRC_BIT_COUNT + TYPE_BIT_COUNT + SEQ_BIT_COUNT);
+  bin_data = get_sub_array(buffer, pointer, *data_size);
+  pointer += *data_size;
+  int *crc = get_sub_array(buffer, pointer, CRC_BIT_COUNT);
+  if(!check_crc(buffer, pointer, crc)){
+    free(crc);
+    return true;
+  }
+  free(crc);
+  return false;
 }
 
-int get_int(unsigned char *buffer, int index, int size) {
-
+int get_int(int *buffer, int start, int size) {
+  int i;
+  int result = 0;
+  for(i=0; i<size; i++){
+    result = result*2 + buffer[i];
+  }
+  return result;
 }
 
-int *parse_size(unsigned char *buffer) {
-
-    return NULL;
+int *get_sub_array(int *array, int start, int size){
+  int *new_array = (int *)calloc(size, sizeof(int));
+  assert(new_array);
+  for(int i=0; i<size; i++){
+    new_array[i] = array[start+i];
+  }
+  return new_array;
 }

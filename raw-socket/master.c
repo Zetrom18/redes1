@@ -52,8 +52,8 @@ void controller(int socket){
   // int c_count = 0;
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
-  int **messages = mount_data_messages("Qualquer coisa ble bla bla");
-  // mount_data_messages(listCurrentFiles(".", "", false));
+  // int **messages = mount_data_messages("Qualquer coisa ble bla bla");
+  int **messages = mount_data_messages(listCurrentFiles(".", "", false));
 
   int *message =  messages[0];
   int *array = message;

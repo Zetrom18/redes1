@@ -45,27 +45,23 @@ void controller(int socket) {
   unsigned char buffer[MAX_BYTE_COUNT];
   int count = 0;
   int i, len = 0;
+  int size, sequence, type, data_size;
+  int *data, *bin_array;
   while (true) {
     memset(&buffer, 0, sizeof(buffer));
-    puts("while start");
     len = recv(socket, &buffer, sizeof(buffer), 0);
     if(len > 0){
-      // count++;
+      count++;
       printf("\nMessage %d (size %d):\n", count, len);
       for(i=0; i<len; i++){
         showbits(buffer[i]);
-        // parse_message(buffer);
-//          show_buffer_as_int(buffer[i]);
-//        for (int j = 0; j < MAX_BYTE_COUNT* sizeof(unsigned short int) - 1; j++){
-//
-//        }
         printf(" ");
       }
-      bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
-      // printf("%02x", buffer[i]);
-      // puts("");
+      bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
+      if(parse_message(bin_array, size, sequence, type, data_size, data)){
+        printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);
+      }
     }
-    puts("while end");
   }
 }
 
