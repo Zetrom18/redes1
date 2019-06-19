@@ -8,6 +8,7 @@
 char *ls(char *, char *);
 char *cd(char *);
 void init();
+void receive_message(int socket, int *bin_array, int *count);
 void controller();
 
 #endif

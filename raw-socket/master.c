@@ -67,7 +67,7 @@ void send_message(int socket, int *message, int sequence){
   puts("message sent");
 }
 
-void send_ls(int socket, char *params) {
+void request_ls(int socket, char *params) {
   int **message = mount_data_messages(params, LS);
   send_message(socket, message[0], 0);
   await_ack(socket);
@@ -107,7 +107,7 @@ void controller(int socket){
      } else {
        appendChar(commandGroup[c_count], c);
      }
-    send_message(socket, message);
+    request_ls(socket, "");
   }
 
 }
