@@ -6,7 +6,7 @@ void test(){
   puts(ls(".", NULL));
   cd("failed-dir");
   puts(ls("/home", "a"));
-  mount_data_messages("hahaha");
+//  mount_data_messages("hahaha");
 }
 
 char *ls(char *dir, char *opt){
@@ -41,8 +41,10 @@ void init() {
   controller(socket);
 }
 
-void receive_message(int socket, int *bin_array){
-  memset(&buffer, 0, sizeof(buffer));
+void receive_message(int socket, int *bin_array, int *count){
+  unsigned char buffer[MAX_BYTE_COUNT];
+  int i, len = 0;
+  memset(buffer, 0, sizeof(buffer));
   len = recv(socket, &buffer, sizeof(buffer), 0);
   if(len > 0){
     count++;
@@ -53,16 +55,15 @@ void receive_message(int socket, int *bin_array){
     }
     bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
   }
+//  free(buffer);
 }
 
 void controller(int socket) {
-  unsigned char buffer[MAX_BYTE_COUNT];
   int count = 0;
-  int i, len = 0;
   int size, sequence, type, data_size;
   int *data, *bin_array;
   while (true) {
-    receive_message(socket, bin_array);
+    receive_message(socket, bin_array, &count);
 
     if(parse_message(bin_array, &size, &sequence, &type, &data_size, data)){
       printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);

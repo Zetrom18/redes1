@@ -8,6 +8,7 @@
 void lls(char *, char *);
 void lcd(char *);
 void init();
+void send_message(int socket, int *message, int sequence);
 void controller(int socket);
 
 #endif
