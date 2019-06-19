@@ -86,7 +86,6 @@ void fill_crc(int *message, int data_size){
     calculate_crc(message, start_bit, crc);
 
     fill_array(message, start_bit, crc, CRC_SIZE);
-
 }
 
 void mount_command(int command, int *message){
@@ -127,7 +126,7 @@ void generate_message(int *message, int size, int sequence, int type, int *bin_d
 }
 
 void mount_data_messages(char *data){
-	int data_size = strlen(data);
+	int data_size = (int) strlen(data);
 
 	int data_bit_array_size = (int)data_size * sizeof(char *);
 	int bin_data[data_bit_array_size];
@@ -138,7 +137,7 @@ void mount_data_messages(char *data){
 	int sequences_count = messages_count / MAX_SEQUENCE_VALUE;
 	printf("mandando %d mensagens, %d sequencias completas\n", messages_count, sequences_count);
 
-	int **messages = (int **) malloc(messages_count * sizeof(int*));
+	int **messages = (int **) malloc((messages_count + 1) * sizeof(int*));
 	int sequence = 0;
 
 	for (int sequences = 0; sequences <= sequences_count; sequences++){

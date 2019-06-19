@@ -94,3 +94,16 @@ void showbits(unsigned int x) {
     }
     printf(" ");
 }
+
+void show_as_int(unsigned int x) {
+    printf("%d, ",(x & (1u << 8) ? 1 : 0));
+    printf(" ");
+}
+
+void bits_to_byte(unsigned int x) {
+
+    for(int i = (sizeof(char)*8) - 1; i >= 0; i--) {
+        putchar(x & (1u << i) ? '1' : '0');
+    }
+    printf(" ");
+}
