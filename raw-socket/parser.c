@@ -44,6 +44,7 @@ int get_int(int *buffer, int start, int size) {
   int i;
   int result = 0;
   for(i=0; i<size; i++){
+    printf("%d\n", result);
     result = result*2 + buffer[i];
   }
   return result;
