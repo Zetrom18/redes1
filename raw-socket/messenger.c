@@ -26,14 +26,15 @@ int int_pow(int base, int exp)
 }
 
 int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
+	puts("");
 	int i,j=0;
 	int *bits = (int *)calloc(92, sizeof(int));
 	for(i=0; i<92; i++){
     if((i+1) % 8 == 0){
       j++;
     }
-		printf("bytes[j]: %d int_pow(2,(7 - (i % 8))): %d", bytes[j], int_pow(2,(7 - (i % 8))));
 		bits[i] = bytes[j] / int_pow(2,(7 - (i % 8)));
+		printf("b: %d p: %d, d: %d", bytes[j], int_pow(2,(7 - (i % 8))), bits[i]);
 	}
 	puts("\n================= PRINTING BIN ARRAY ====================");
 	for(i=0; i<92; i++){
