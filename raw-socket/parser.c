@@ -50,6 +50,6 @@ unsigned char *get_string(int *buffer, int start, int size){
   for(int i = 0; i<size; i++){
     string[i] = get_int(buffer, start+(i*8), 8);
   }
-  string[i] = '\0';
+  string[size] = '\0';
   return string;
 }
