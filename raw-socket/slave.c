@@ -54,7 +54,6 @@ void controller(int socket) {
       printf("\nMessage %d (size %d):\n", count, len);
       for(i=0; i<len; i++){
         showbits(buffer[i]);
-        bytes_to_bin_array(buffer, 14);
         // parse_message(buffer);
 //          show_buffer_as_int(buffer[i]);
 //        for (int j = 0; j < 14* sizeof(unsigned short int) - 1; j++){
@@ -62,6 +61,7 @@ void controller(int socket) {
 //        }
         printf(" ");
       }
+      bytes_to_bin_array(buffer, 14);
       // printf("%02x", buffer[i]);
       // puts("");
     }
