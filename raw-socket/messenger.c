@@ -129,8 +129,8 @@ int **mount_data_messages(char *data){
 	string_to_bin_array(data, data_size, bin_data);
 	// print_bit_array(bin_data, data_bit_array_size);
 
-	int messages_count = (int)floor(data_bit_array_size / MAX_DATA_BIT_COUNT); //TODO tratar ultima mensagem caso data_bit_array_size % MAX_DATA_BIT_COUNT > 0
-	int sequences_count = (int)floor(messages_count / MAX_SEQUENCE_VALUE);
+	int messages_count = data_bit_array_size / MAX_DATA_BIT_COUNT; //TODO tratar ultima mensagem caso data_bit_array_size % MAX_DATA_BIT_COUNT > 0
+	int sequences_count = messages_count / MAX_SEQUENCE_VALUE;
 	printf("mandando %d mensagens, %d sequencias completas\n", messages_count, sequences_count);
 
 	int **messages = (int **) calloc(messages_count + 1, sizeof(int*));
