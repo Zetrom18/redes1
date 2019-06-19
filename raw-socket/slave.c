@@ -42,7 +42,7 @@ void init() {
 }
 
 void controller(int socket) {
-  unsigned char buffer[14];
+  unsigned char buffer[12];
   int count = 0;
   int i, len = 0;
   while (true) {
@@ -54,6 +54,7 @@ void controller(int socket) {
       printf("\nMessage %d (size %d):\n", count, len);
       for(i=0; i<len; i++){
         showbits(buffer[i]);
+        parse_message(buffer);
 //          show_buffer_as_int(buffer[i]);
 //        for (int j = 0; j < 14* sizeof(unsigned short int) - 1; j++){
 //

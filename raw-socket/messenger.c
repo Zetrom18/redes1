@@ -137,7 +137,7 @@ void mount_data_messages(char *data){
 	int sequences_count = messages_count / MAX_SEQUENCE_VALUE;
 	printf("mandando %d mensagens, %d sequencias completas\n", messages_count, sequences_count);
 
-	int **messages = (int **) malloc(messages_count * sizeof(int*));
+	int **messages = (int **) malloc((messages_count + 1) * sizeof(int*));
 	int sequence = 0;
 
 	for (int sequences = 0; sequences <= sequences_count; sequences++){
