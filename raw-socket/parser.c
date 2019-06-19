@@ -39,7 +39,6 @@ int get_int(int *buffer, int start, int size) {
 
 int *get_sub_array(int *array, int start, int size){
   int *new_array = (int *)calloc(size, sizeof(int));
-  assert(new_array);
   for(int i=0; i<size; i++){
     new_array[i] = array[start+i];
   }
