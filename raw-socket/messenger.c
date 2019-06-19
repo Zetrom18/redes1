@@ -35,6 +35,7 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
     }
 		bits[i] = (bytes[j] & int_pow(2,(7 - (i % 8)))) / int_pow(2,(7 - (i % 8)));
 	}
+	return bits;
 }
 
 void string_to_bin_array(char *string, int string_size, int *out){
