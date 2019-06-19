@@ -58,7 +58,7 @@ void controller(int socket) {
         printf(" ");
       }
       bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
-      if(parse_message(bin_array, size, sequence, type, data_size, data)){
+      if(parse_message(bin_array, *size, *sequence, *type, *data_size, data)){
         printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);
       }
     }

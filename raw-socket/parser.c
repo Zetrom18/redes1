@@ -5,6 +5,7 @@
 #include "parser.h"
 
 bool parse_message(int *buffer, int *size, int *sequence, int *type, int *data_size, int *bin_data){
+  puts("PARSE STAAART");
   int pointer = 0;
   if(get_int(buffer, pointer, BEGIN_BIT_COUNT) != INT_BEGIN_MARKER){
     return false;
