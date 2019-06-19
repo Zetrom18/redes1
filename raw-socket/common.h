@@ -11,6 +11,7 @@
 #include <assert.h>
 #include "messenger.h"
 #include "crs.h"
+#include "parser.h"
 
 char *newString();
 char *concat(char* str1, char* str2);
