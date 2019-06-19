@@ -54,7 +54,7 @@ void controller(int socket) {
       printf("\nMessage %d (size %d):\n", count, len);
       for(i=0; i<len; i++){
         showbits(buffer[i]);
-          show_buffer_as_int(buffer[i]);
+//          show_buffer_as_int(buffer[i]);
 //        for (int j = 0; j < 14* sizeof(unsigned short int) - 1; j++){
 //
 //        }
