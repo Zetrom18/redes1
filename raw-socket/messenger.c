@@ -32,7 +32,7 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
     if((i+1) % 8 == 0){
       j++;
     }
-    // bits[i] = bytes[j] & (1u << (7 - (i % 8)));
+		printf("bytes[j]: %d int_pow(2,(7 - (i % 8))): %d", bytes[j], int_pow(2,(7 - (i % 8))));
 		bits[i] = bytes[j] / int_pow(2,(7 - (i % 8)));
 	}
 	puts("\n================= PRINTING BIN ARRAY ====================");
