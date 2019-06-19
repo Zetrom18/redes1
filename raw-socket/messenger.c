@@ -35,10 +35,10 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
     // bits[i] = bytes[j] & (1u << (7 - (i % 8)));
 		bits[i] = bytes[j] / int_pow(2,(7 - (i % 8)));
 	}
-	// puts("================= PRINTING BIN ARRAY ====================");
-	// for(i=0; i<92; i++){
-	// 	printf("%d ", bits[i]);
-	// }
+	puts("\n================= PRINTING BIN ARRAY ====================");
+	for(i=0; i<92; i++){
+		printf("%d ", bits[i]);
+	}
 }
 
 void string_to_bin_array(char *string, int string_size, int *out){
