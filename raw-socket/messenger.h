@@ -43,8 +43,9 @@
 #define CHAT 18
 
 // unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
+unsigned char *bin_array_to_bytes(int *bin_array, int size);
 void mount_command(int command, int *message);
-void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size);;
+void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size);
 int **mount_data_messages(char *data);
 void string_to_bin_array(char *string, int string_size, int *out);
 void int_to_bin_array(int in, int count, int *out);

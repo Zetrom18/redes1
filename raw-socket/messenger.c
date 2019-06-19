@@ -1,5 +1,33 @@
 #include "messenger.h"
 
+unsigned char *bin_array_to_bytes(int *bin_array, int size){
+	int i,j=0;
+  unsigned char *bytes = (unsigned char*)malloc(sizeof(unsigned char)*(14));
+	memset(bytes, 0, sizeof(bytes));
+	for(i=0; i<size; i++){
+    if((i+1) % 8 == 0){
+      j++;
+    }
+    bytes[j] = (bytes[j] | (bin_array[i]==1 ? 1u : 0u)) << 1;
+	}
+	return bytes;
+}
+
+int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
+	int i,j=0;
+	int *bits = (int *)calloc(92, sizeof(int));
+	for(i=0; i<92; i++){
+    if((i+1) % 8 == 0){
+      j++;
+    }
+    bits[i] = bytes[j] & (1u << (7 - (i % 8)));
+	}
+	puts("================= PRINTING BIN ARRAY ====================");
+	for(i=0; i<92; i++){
+		printf("%d ", bits[i]);
+	}
+}
+
 void string_to_bin_array(char *string, int string_size, int *out){
 	int i = 0;
 
