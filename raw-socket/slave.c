@@ -42,7 +42,7 @@ void init() {
 }
 
 void controller(int socket) {
-  unsigned char buffer[14];
+  unsigned char buffer[MAX_BYTE_COUNT];
   int count = 0;
   int i, len = 0;
   while (true) {
@@ -56,12 +56,12 @@ void controller(int socket) {
         showbits(buffer[i]);
         // parse_message(buffer);
 //          show_buffer_as_int(buffer[i]);
-//        for (int j = 0; j < 14* sizeof(unsigned short int) - 1; j++){
+//        for (int j = 0; j < MAX_BYTE_COUNT* sizeof(unsigned short int) - 1; j++){
 //
 //        }
         printf(" ");
       }
-      bytes_to_bin_array(buffer, 14);
+      bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
       // printf("%02x", buffer[i]);
       // puts("");
     }

@@ -8,7 +8,11 @@
 #define CRC_BIT_COUNT 8
 
 #define MAX_DATA_BIT_COUNT 64
+#define MAX_MESSAGE_BIT_COUNT 96
 #define MAX_SEQUENCE_VALUE 32
+
+#define MAX_BIT_COUNT 112
+#define MAX_BYTE_COUNT 14
 
 #include <stdio.h>
 #include <string.h>

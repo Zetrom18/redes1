@@ -58,11 +58,11 @@ void controller(int socket){
   int *message =  messages[0];
   int *array = message;
   // int array[] = {0,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0};
-  unsigned char *bytes = bin_array_to_bytes(array, 96);
+  unsigned char *bytes = bin_array_to_bytes(array, MAX_MESSAGE_BIT_COUNT);
   int count = 0;
   while (true) {
     puts("while start");
-    ssize_t sent_count = send(socket, bytes, 14, 0);
+    ssize_t sent_count = send(socket, bytes, MAX_BYTE_COUNT, 0);
     if (sent_count < 0){
       perror("send() error");
       exit(-1);
