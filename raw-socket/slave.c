@@ -59,7 +59,7 @@ void controller(int socket) {
       }
       bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
       if(parse_message(bin_array, &size, &sequence, &type, &data_size, data)){
-        printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);
+        printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\tData: %s\n\t", count, size, sequence, type, data_size, get_string(data; 0, data_size));
       }
     }
   }
