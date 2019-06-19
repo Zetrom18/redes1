@@ -44,6 +44,7 @@
 
 // unsigned char *begin_mark[BEGIN_BIT_COUNT] = {0, 1, 1, 1, 1, 1, 1, 0};
 unsigned char *bin_array_to_bytes(int *bin_array, int size);
+int *bytes_to_bin_array(unsigned char *bytes, int bytes_count);
 void mount_command(int command, int *message);
 void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size);
 int **mount_data_messages(char *data);

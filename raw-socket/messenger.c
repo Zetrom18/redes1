@@ -13,6 +13,18 @@ unsigned char *bin_array_to_bytes(int *bin_array, int size){
 	return bytes;
 }
 
+int int_pow(int base, int exp)
+{
+    int result = 1;
+    while(exp){
+        if (exp & 1)
+           result *= base;
+        exp /= 2;
+        base *= base;
+    }
+    return result;
+}
+
 int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
 	int i,j=0;
 	int *bits = (int *)calloc(92, sizeof(int));
@@ -20,12 +32,13 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
     if((i+1) % 8 == 0){
       j++;
     }
-    bits[i] = bytes[j] & (1u << (7 - (i % 8)));
+    // bits[i] = bytes[j] & (1u << (7 - (i % 8)));
+		bits[i] = bytes[j] / int_pow(2,(7 - (i % 8)));
 	}
-	puts("================= PRINTING BIN ARRAY ====================");
-	for(i=0; i<92; i++){
-		printf("%d ", bits[i]);
-	}
+	// puts("================= PRINTING BIN ARRAY ====================");
+	// for(i=0; i<92; i++){
+	// 	printf("%d ", bits[i]);
+	// }
 }
 
 void string_to_bin_array(char *string, int string_size, int *out){
