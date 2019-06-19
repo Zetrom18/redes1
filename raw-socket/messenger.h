@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "crc.h"
 
 //{0,0,0,0,0};
