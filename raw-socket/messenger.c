@@ -34,7 +34,6 @@ int *bytes_to_bin_array(unsigned char *bytes, int bytes_count){
       j++;
     }
 		bits[i] = (bytes[j] & int_pow(2,(7 - (i % 8)))) / int_pow(2,(7 - (i % 8)));
-		printf("b: %d p: %d, d: %d\n", bytes[j], int_pow(2,(7 - (i % 8))), bits[i]);
 	}
 	puts("\n================= PRINTING BIN ARRAY ====================");
 	for(i=0; i<92; i++){
