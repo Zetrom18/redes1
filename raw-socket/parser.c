@@ -40,6 +40,7 @@ bool parse_message(int *buffer, int *size, int *sequence, int *type, int *data_s
 }
 
 int get_int(int *buffer, int start, int size) {
+  printf("%d %d\n", start, size);
   int i;
   int result = 0;
   for(i=0; i<size; i++){
