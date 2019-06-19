@@ -9,7 +9,7 @@ void test_ls_cd(){
 }
 
 void test() {
-    mount_data_messages(listCurrentFiles(".", "", true));
+    // mount_data_messages(listCurrentFiles(".", "", true));
 }
 
 void lls(char *dir, char *opt){
@@ -65,8 +65,17 @@ void controller(int socket){
   // int c_count = 0;
   // char *commandGroup[2];
   // commandGroup[c_count] = newString();
-  int array[] = {0,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0};
-  unsigned char *bytes = bin_array_to_bytes(array, sizeof(array)/sizeof(int));
+  int **messages = mount_data_messages("Qualquer coisa ble bla bla");
+  // mount_data_messages(listCurrentFiles(".", "", false));
+
+  puts("wfbuice");
+  int *message =  messages[0];
+  int *array = message;
+  // int array[] = {0,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0};
+  for(int i=0; i<96; i++){
+    printf("%d\n", messages[0][i]);
+  }
+  unsigned char *bytes = bin_array_to_bytes(array, 96);
   int count = 0;
   while (true) {
     puts("while start");
