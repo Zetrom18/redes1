@@ -12,7 +12,7 @@ void string_to_bin_array(char *string, int string_size, int *out){
 	        out[i] = bit;
 	        i++;
 	    }
-	    
+
 //	    puts("");
 	}
 }
@@ -38,7 +38,7 @@ void print_bit_array(int* array, int size){
 
 void fill_array(int *array, int start, int *content, int content_size){
 	for (int i = 0; i < content_size; i++ ){
-		array[start + i] = content[i]; 
+		array[start + i] = content[i];
 	}
 }
 
@@ -60,7 +60,7 @@ void fill_size(int *message, int size){
 
 void fill_sequence(int *message, int sequence){
 	int start_bit = BEGIN_BIT_COUNT + SIZE_BIT_COUNT;
-	
+
 	int seq_binary[SEQ_BIT_COUNT];
 	int_to_bin_array(sequence, SEQ_BIT_COUNT, seq_binary);
 	fill_array(message, start_bit, seq_binary, SEQ_BIT_COUNT);
@@ -148,7 +148,7 @@ void mount_data_messages(char *data){
 			int current_message_index = sequences * MAX_SEQUENCE_VALUE + sequence;
 			int current_data_start = current_message_index * MAX_DATA_BIT_COUNT;
 			int current_data_size = data_bit_array_size - current_data_start;
-			
+
 			if(current_data_size > MAX_DATA_BIT_COUNT) {
 				current_data_size = MAX_DATA_BIT_COUNT;
 			}

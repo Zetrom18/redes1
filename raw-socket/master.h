@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-#define ADDR "eth0"
+#define ADDR "enp2s0"
 
 void lls(char *, char *);
 void lcd(char *);
