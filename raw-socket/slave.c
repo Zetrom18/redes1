@@ -41,6 +41,20 @@ void init() {
   controller(socket);
 }
 
+void receive_message(int socket, int *bin_array){
+  memset(&buffer, 0, sizeof(buffer));
+  len = recv(socket, &buffer, sizeof(buffer), 0);
+  if(len > 0){
+    count++;
+    printf("\nMessage %d (size %d):\n", count, len);
+    for(i=0; i<len; i++){
+      showbits(buffer[i]);
+      printf(" ");
+    }
+    bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
+  }
+}
+
 void controller(int socket) {
   unsigned char buffer[MAX_BYTE_COUNT];
   int count = 0;
@@ -48,19 +62,10 @@ void controller(int socket) {
   int size, sequence, type, data_size;
   int *data, *bin_array;
   while (true) {
-    memset(&buffer, 0, sizeof(buffer));
-    len = recv(socket, &buffer, sizeof(buffer), 0);
-    if(len > 0){
-      count++;
-      printf("\nMessage %d (size %d):\n", count, len);
-      for(i=0; i<len; i++){
-        showbits(buffer[i]);
-        printf(" ");
-      }
-      bin_array = bytes_to_bin_array(buffer, MAX_BYTE_COUNT);
-      if(parse_message(bin_array, &size, &sequence, &type, &data_size, data)){
-        printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);
-      }
+    receive_message(socket, bin_array);
+
+    if(parse_message(bin_array, &size, &sequence, &type, &data_size, data)){
+      printf("\nMessage number: %d\n\tsize: %d\n\tsequence: %d\n\ttype: %d\n\tdata_size: %d\n\t", count, size, sequence, type, data_size);
     }
   }
 }

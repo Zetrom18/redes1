@@ -52,7 +52,7 @@ unsigned char *bin_array_to_bytes(int *bin_array, int size);
 int *bytes_to_bin_array(unsigned char *bytes, int bytes_count);
 void mount_command(int command, int *message);
 void generate_message(int *message, int size, int sequence, int type, int *bin_data, int data_size);
-int **mount_data_messages(char *data);
+int **mount_data_messages(char *data, int type);
 void string_to_bin_array(char *string, int string_size, int *out);
 void int_to_bin_array(int in, int count, int *out);
 void print_bit_array(int* array, int size);
